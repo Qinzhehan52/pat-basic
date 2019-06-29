@@ -50,7 +50,7 @@ int main(int argc, char const *argv[])
             moral.push_back(p);
         }
 
-        else if (p.moral < high && p.talent < high && p.moral > p.talent)
+        else if (p.moral < high && p.talent < high && p.moral >= p.talent)
         {
             none.push_back(p);
         }
@@ -61,8 +61,15 @@ int main(int argc, char const *argv[])
         }
     }
 
-    std::cout << all.size() + moral.size() + none.size() + other.size() << std::endl;
+    int total = all.size() + moral.size() + none.size() + other.size();
+    
+    std::cout << total;
 
+    if (total)
+    {
+        std::cout << std::endl;
+    }
+    
     std::sort(all.begin(), all.end(), cmp);
     std::sort(moral.begin(), moral.end(), cmp);
     std::sort(none.begin(), none.end(), cmp);
@@ -72,7 +79,7 @@ int main(int argc, char const *argv[])
     {
         std::cout << (*it).num << " " << (*it).moral << " " << (*it).talent;
 
-        if (moral.size() || none.size() || other.size())
+        if (moral.size() || none.size() || other.size() || it != all.end())
         {
             std::cout << std::endl;
         }
@@ -82,7 +89,7 @@ int main(int argc, char const *argv[])
     {
         std::cout << (*it).num << " " << (*it).moral << " " << (*it).talent;
 
-        if (none.size() || other.size())
+        if (none.size() || other.size() || it != moral.end())
         {
             std::cout << std::endl;
         }
@@ -92,7 +99,7 @@ int main(int argc, char const *argv[])
     {
         std::cout << (*it).num << " " << (*it).moral << " " << (*it).talent;
 
-        if (other.size())
+        if (other.size() || it != other.end())
         {
             std::cout << std::endl;
         }
