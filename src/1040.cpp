@@ -1,3 +1,5 @@
+// from jianshu OliverLew
+
 #include <stdio.h>
 
 #define LIMIT 1000000007
